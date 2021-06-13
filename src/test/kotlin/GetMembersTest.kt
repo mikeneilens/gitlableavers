@@ -16,14 +16,14 @@ class GetMembersTest: StringSpec( {
         "services.local.jl.key" to key,
     )
 
-    "getMembers returns a list of first page of members if there is only one page of members" {
+    "getMembers returns a list of two members if there is only one page of members with two members on each page" {
         val client = createMockClient(url, HttpMethod.Post,key,listOf(testResponse3))
         val result = getMembers(config, client)
         result.size shouldBe 2
         result[0].publicEmail shouldBe "f5.s5@johnlewis.co.uk"
         result[1].publicEmail shouldBe "f6.s6@johnlewis.co.uk"
     }
-    "getMembers returns a list of several pages of members if there is several pages of members"  {
+    "getMembers returns a list of six members if there is three pages of members with two members on each page"  {
         val client = createMockClient(url, HttpMethod.Post,key,listOf(testResponse1, testResponse2, testResponse3))
         val result = getMembers(config, client)
         result.size shouldBe 6
