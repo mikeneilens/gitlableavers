@@ -16,7 +16,7 @@ class GitlabAPIConnector (
     suspend fun getMembers(endCursor:String = "") = client.post<GitlabMembers>(baseUrl) {
         headers {
             append("PRIVATE-TOKEN", key)
-            append(HttpHeaders.ContentType, ContentType.Application.Json)
+            append(HttpHeaders.ContentType, "application/json")
         }
 
         body=Query(

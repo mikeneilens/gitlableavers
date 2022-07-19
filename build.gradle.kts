@@ -1,6 +1,6 @@
 
 plugins {
-    kotlin("jvm") version "1.4.21"
+    kotlin("jvm") version "1.7.10"
 }
 
 group = "org.example"
