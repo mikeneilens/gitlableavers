@@ -25,12 +25,12 @@ class RouteTest:WordSpec({
             }) {
                 val call = handleRequest(HttpMethod.Get, "/")
                 val expectedResult = """
-                    f1.s1@johnlewis.co.uk	s1, f1
-                    f2.s2@johnlewis.co.uk	s2, f2
-                    f3.s3@johnlewis.co.uk	s3, f3
-                    f4.s4@johnlewis.co.uk	s4, f4
-                    f5.s5@johnlewis.co.uk	s5, f5
-                    f6.s6@johnlewis.co.uk	s6, f6
+                    f1.s1@johnlewis.co.uk	s1, f1	123
+                    f2.s2@johnlewis.co.uk	s2, f2	123
+                    f3.s3@johnlewis.co.uk	s3, f3	123
+                    f4.s4@johnlewis.co.uk	s4, f4	123
+                    f5.s5@johnlewis.co.uk	s5, f5	123
+                    f6.s6@johnlewis.co.uk	s6, f6	123
                 """.trimIndent()
                 call.response.status() shouldBe HttpStatusCode.OK
                 call.response.content shouldBe expectedResult

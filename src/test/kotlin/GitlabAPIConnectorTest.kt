@@ -24,10 +24,10 @@ class GitlabAPIConnectorTest:WordSpec({
                     Data(
                         Group(GroupMembers(PageInfo("page0", true),
                             listOf(
-                                MemberNode(User("gid://gitlab/User/8576067", "name1", "F1.S1", "f1.s1@johnlewis.co.uk"), AccessLevel("REPORTER")),
-                                MemberNode(User("gid://gitlab/User/8015045", "name2", "F2.S2", "f2.s2@johnlewis.co.uk"), AccessLevel("REPORTER")
+                                MemberNode(User("gid://gitlab/User/8576067", "name1", "F1.S1", "f1.s1@johnlewis.co.uk"), AccessLevel("REPORTER"), createdAt = "123" ),
+                                MemberNode(User("gid://gitlab/User/8015045", "name2", "F2.S2", "f2.s2@johnlewis.co.uk"), AccessLevel("REPORTER"), createdAt = "123")
                                 ))
-                        ))))
+                        )))
 
             GitlabAPIConnector(config, client).getMembers("") shouldBe expectedMembers
         }

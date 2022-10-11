@@ -19,7 +19,8 @@ val testResponse1 = """
                             },
                             "accessLevel": {
                                 "stringValue": "REPORTER"
-                            }
+                            },
+                            "createdAt": "123"
                         },
                         {
                             "user": {
@@ -30,7 +31,8 @@ val testResponse1 = """
                             },
                             "accessLevel": {
                                 "stringValue": "REPORTER"
-                            }
+                            },
+                            "createdAt": "123"
                         }
                     ]
                 }
@@ -58,7 +60,8 @@ val testResponse2 = """
                             },
                             "accessLevel": {
                                 "stringValue": "REPORTER"
-                            }
+                            },
+                            "createdAt": "123"
                         },
                         {
                             "user": {
@@ -69,7 +72,8 @@ val testResponse2 = """
                             },
                             "accessLevel": {
                                 "stringValue": "REPORTER"
-                            }
+                            },
+                            "createdAt": "123"
                         }
                     ]
                 }
@@ -97,7 +101,8 @@ val testResponse3 = """
                             },
                             "accessLevel": {
                                 "stringValue": "REPORTER"
-                            }
+                            },
+                            "createdAt": "123"
                         },
                         {
                             "user": {
@@ -108,7 +113,8 @@ val testResponse3 = """
                             },
                             "accessLevel": {
                                 "stringValue": "REPORTER"
-                            }
+                            },
+                            "createdAt": "123"
                         }
                     ]
                 }

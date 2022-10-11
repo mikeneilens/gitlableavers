@@ -91,30 +91,23 @@ fun Application.mainModule(
         route("/") {
             get {
                 val gitlabUsers = getMembers(environment.config, client)
-                call.respond(gitlabUsers.toNames().joinToString("\n"))
+                call.respond(gitlabUsers.toFormattedOutput().joinToString("\n"))
             }
         }
     }
 }
 
-suspend fun getMembers(config:ApplicationConfig, client:HttpClient):List<User> {
+suspend fun getMembers(config:ApplicationConfig, client:HttpClient):List<ResponseModel> {
     var hasNextPage = true
     var endCursor = ""
-    val users = mutableListOf<User>()
+    val users = mutableListOf<ResponseModel>()
     while (hasNextPage) {
         val gitlabMembers = GitlabAPIConnector(config,client).getMembers(endCursor)
         hasNextPage = gitlabMembers.data?.group?.groupMembers?.pageInfo?.hasNextPage ?: false
         endCursor = gitlabMembers.data?.group?.groupMembers?.pageInfo?.endCursor ?: ""
-        users.addAll( gitlabMembers.data?.group?.groupMembers?.nodes?.mapNotNull{it.user} ?: emptyList())
+        users.addAll( gitlabMembers.data?.group?.groupMembers?.nodes?.map{ ResponseModel.fromMemberNode(it)} ?: emptyList())
     }
     return users
 }
 
-fun User.toName():String? = publicEmail?.let{ "$it\t${it.toClarityName()}"}
-
-fun String.nameWithinEmail() = split("@").first().split(".")
-
-fun String.toClarityName() =
-     if (nameWithinEmail().size ==2 ) "${nameWithinEmail().last()}, ${nameWithinEmail().first()}" else ""
-
-fun List<User>.toNames():List<String> = mapNotNull {it.toName()}.sortedBy { it }
+fun List<ResponseModel>.toFormattedOutput():List<String> = map {it.toFormattedOutput() }.sortedBy { it }

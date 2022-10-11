@@ -35,6 +35,7 @@ class GitlabAPIConnector (
                           username
                           publicEmail
                         }
+                        createdAt
                         accessLevel {
                           stringValue
                         }
@@ -53,6 +54,6 @@ data class AccessLevel(val stringValue: String?)
 data class Data(val group: Group?)
 data class Group(val groupMembers: GroupMembers?)
 data class GroupMembers(val pageInfo: PageInfo?, val nodes: List<MemberNode>?)
-data class MemberNode(val user: User?, val accessLevel: AccessLevel?)
+data class MemberNode(val user: User?, val accessLevel: AccessLevel?, val createdAt:String?)
 data class PageInfo(val endCursor: String?, val hasNextPage: Boolean?)
 data class User(val id: String?, val name: String?, val username: String?, val publicEmail: String?)
